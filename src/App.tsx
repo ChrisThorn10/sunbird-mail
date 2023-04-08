@@ -1,24 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ContentSection from './ContentSection';
 
 function App() {
+  let contentSections: React.ReactElement[] = [];
+  const [numContentSections, setNumContentSections] = useState(1)
+  
+  const addContentSection = () => {
+    setNumContentSections(numContentSections + 1)
+  }
+
+  const removeContentSection = (i : number) => {
+    const confirmBox = window.confirm(
+      "Do you really want to delete this Content Section?"
+    )
+
+    if (confirmBox === true) {
+      contentSections.splice(i, 1)
+      setNumContentSections(numContentSections - 1)
+    }
+  }
+
+
+      for (var i = 0; i < numContentSections; i += 1) {
+        contentSections.push(
+          <ContentSection 
+            key={i}
+            index={i} 
+            addContent={addContentSection} 
+            removeContent={removeContentSection} 
+            numContentSections={numContentSections}
+            />
+        );
+      };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {contentSections}
     </div>
   );
 }
