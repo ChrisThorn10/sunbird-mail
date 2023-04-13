@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ContentSection from './ContentSection';
+import Layout from './Layout';
 
 function App() {
   let contentSections: React.ReactElement[] = [];
@@ -37,7 +37,14 @@ function App() {
 
   return (
     <div className="App">
+      <div id="AppLayoutContainer">
+        <Layout />
+      </div>
+      <div id="AppTemplateContainer">
       {contentSections}
+      </div>
+      
+      
     </div>
   );
 }
