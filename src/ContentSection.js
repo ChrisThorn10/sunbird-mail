@@ -12,7 +12,7 @@ export default function ContentSection(props) {
       };
       
     return (
-        <div style={{border: '1px solid black', width: '600px', height: '300px', margin: '0 auto', marginTop:'-1px'}}>
+        <div id={"contentSection" + (props.index + 1)} style={{border: '1px solid black', width: '600px', height: '300px', margin: '0 auto', marginTop:'-1px'}}>
             <h2>Content Section {props.index + 1}</h2>
             <p>Select a Layout</p>
             <button onClick={props.addContent} style={buttonStyle}>+</button>
