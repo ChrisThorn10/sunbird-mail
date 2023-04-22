@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import ContentSection from './ContentSection';
 import Layout from './Layout';
+import Hero1 from '../src/assets/layouts/hero-1.jpg'
+
 
 function App() {
   let contentSections: React.ReactElement[] = [];
@@ -31,9 +33,17 @@ function App() {
             addContent={addContentSection} 
             removeContent={removeContentSection} 
             numContentSections={numContentSections}
+            applyContent={applyContent}
             />
         );
       };
+
+  function applyContent(i : number) {
+    // alert(`contentSection${i}`)
+    const newElem = new Image(600, 300);
+    newElem.src=Hero1;
+    let elem = document.getElementById(`contentSection${i}`)?.replaceChildren(newElem)
+  }
 
   return (
     <div className="App">
