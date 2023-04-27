@@ -6,7 +6,7 @@ import Hero1 from '../src/assets/layouts/hero-1.jpg'
 
 
 function App() {
-  let contentSections: React.ReactElement[] = [];
+  let contentSections : React.ReactElement[] = [];
   const [numContentSections, setNumContentSections] = useState(1)
   
   const addContentSection = () => {
@@ -38,8 +38,7 @@ function App() {
         );
       };
 
-  function applyContent(i : number) {
-    // alert(`contentSection${i}`)
+  function applyContent(i : number, layout : any) {
     const newElem = new Image(600, 300);
     newElem.src=Hero1;
     let elem = document.getElementById(`contentSection${i}`)?.replaceChildren(newElem)
@@ -48,7 +47,11 @@ function App() {
   return (
     <div className="App">
       <div id="AppLayoutContainer">
-        <Layout />
+        <div className="Layout" style={{overflow: "auto"}}>
+          <h1>Layout Panel</h1>
+          <p>Select a Layout</p>
+            <Layout />
+        </div>
       </div>
       <div id="AppTemplateContainer">
       {contentSections}
