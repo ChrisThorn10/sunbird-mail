@@ -12,17 +12,17 @@ export default function ContentSection(props) {
         opacity: '.5'
       };
 
-      const [{ isOver }, dropRef] = useDrop(() => ({
+      const [{ isOver }, dropRef] = useDrop({
         accept: "layout",
-        drop: () => props.applyContent(props.index +1),
+        drop: (item) => props.applyContent(props.index +1, item),
         collect: (monitor) => ({
           isOver: monitor.isOver(),
         }),
-      }));
+      });
       
     return (
         <div  
-            style={{border: '1px solid black', width: '600px', height: '300px', margin: '0 auto', marginTop:'-1px', backgroundColor: isOver ? "aquamarine" : "#FFFFFF"}}
+            style={{border: isOver ? "5px solid aquamarine" : '1px solid black', width: '600px', height: '300px', margin: '0 auto', marginTop:'-1px', backgroundColor: isOver ? "#C5FFEB" : "#FFFFFF"}}
             ref={dropRef}
             >
             <div style={{height: 0}}>
