@@ -12,13 +12,17 @@ function App() {
   }
 
   const removeContentSection = (i : number) => {
+    console.log(`contentSections before splice:`)
+    contentSections.forEach(content => console.log(content)
+    );
     const confirmBox = window.confirm(
       "Do you really want to delete this Content Section?"
     )
+    
 
     if (confirmBox === true) {
-      contentSections.splice(i, 1)
-      setNumContentSections(numContentSections - 1)
+      document.getElementById(`contentSection${i+1}`)?.parentElement?.remove()
+      //setNumContentSections(numContentSections - 1)
     }
   }
 
